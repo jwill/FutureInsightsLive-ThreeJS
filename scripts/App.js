@@ -32,6 +32,20 @@ App.prototype.render = function() {
     self.renderer.render(self.scene, self.camera);            
 };
 
+App.prototype.makeGeometry = function (verts, faces) {
+    console.log("here");
+    var g = new THREE.Geometry();
+    for (var i = 0; i<verts.length; i++) {
+        var v = verts[i];
+        g.vertices.push(new THREE.Vector3(v[0], v[1], v[2]));
+    }
+    for (var j = 0; j<faces.length; j++) {
+        var f = faces[j];
+        g.faces.push(new THREE.Face3(f[0], f[1], f[2]));
+    }
+    return g;
+}
+
 window.animate = function () {
     requestAnimationFrame(window.animate);
     window.app.render();
