@@ -3,12 +3,9 @@ var LoadScene = (function() {
     self.prototype = new App();
     window.app = self.prototype;
 
-    console.log(self.prototype.scene);
-
     var loader = new THREE.SceneLoader();
     loader.callbackProgress = this.callbackProgress;
     loader.load("scripts/scenes/falling-ball.js", this.callbackFinished);
-
 
     return self;
 });
@@ -20,7 +17,6 @@ LoadScene.prototype.callbackProgress = function (progress, result) {
 
 LoadScene.prototype.callbackFinished = function (result) {
     var self = window.app;
-    //console.log("f" +result.scene);
 
     self.scene = result.scene;
     self.camera = result.cameras.Camera;
