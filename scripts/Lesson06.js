@@ -25,7 +25,7 @@ App.prototype.render = function () {
     self.cube.rotation.x += 0.05;
     self.cube.rotation.y += 0.01;
 
-    self.renderer.render(self.scene, self.camera);            
+    self.renderer.render(self.scene, self.camera);
 };
 
 window.Lesson06 = Lesson06;
