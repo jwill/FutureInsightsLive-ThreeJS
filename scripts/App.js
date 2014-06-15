@@ -24,6 +24,7 @@ var App = (function() {
     else container.appendChild(self.renderer.domElement);
 
     self.scene.add(self.camera);
+    return self;
 });
 
 

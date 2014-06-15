@@ -2,6 +2,8 @@ var ShaderWithUniform = (function() {
     var self = this;
     self.prototype = new App();
     window.app = self.prototype;
+
+    // so app has a reference to outer object
     window.app.outer = self;
     self.prototype.clock = new THREE.Clock();
     self.drawScene();
