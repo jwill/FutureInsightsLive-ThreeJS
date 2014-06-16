@@ -26,9 +26,9 @@ EnemyShip.prototype.getMesh = function() {
 var EnemyShipManager = (function() {
   this.clock = new THREE.Clock(true);
   this.enemies = [];
-  this.spawnTime = 1000;
+  this.spawnTime = 5;
   this.currentTime = 0;
-  this.spawning = false;
+  this.spawning = true;
   return this;
 });
 
@@ -38,6 +38,7 @@ EnemyShipManager.prototype.trySpawn = function() {
   //console.log(this.currentTime);
   if (self.currentTime >= self.spawnTime && self.spawning) {
     self.spawn();
+    self.currentTime = 0;
   }
 };
 
@@ -48,6 +49,10 @@ EnemyShipManager.prototype.render = function () {
     var enemy = enemies[i];
     if (enemy.name == 'EnemyShip') {
       enemy.position.x -= 5;
+    }
+    // Remove ship when offscreen
+    if (enemy.position.x < -600) {
+      self.getScene().remove(enemy);
     }
   }
 };
